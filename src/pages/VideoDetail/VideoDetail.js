@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { fetchFromAPI } from "../../services/youtubeAPI";
 import "./VideoDetail.css";
 
-function VideoDetail() {
+function VideoDetail({ darkMode }) {
   const { id } = useParams();
   const [video, setVideo] = useState(null);
   const [channelIcon, setChannelIcon] = useState("");
@@ -42,7 +42,7 @@ function VideoDetail() {
   const viewCount = statistics?.viewCount || "0";
 
   return (
-    <div className="video-detail-container">
+    <div className={`video-detail-container ${darkMode ? "dark" : ""}`}>
       <div className="video-frame">
         <iframe
           src={embedUrl}

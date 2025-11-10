@@ -133,6 +133,13 @@
   color: #555;
 }
 
+.channel-detail.dark .channel-meta h2,
+.channel-detail.dark .channel-meta p,
+.channel-detail.dark .channel-description,
+.channel-detail.dark .channel-videos-title {
+  color: var(--text-color);
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

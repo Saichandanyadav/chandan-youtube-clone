@@ -7,8 +7,9 @@ function Navbar({ darkMode, setDarkMode }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [shrink, setShrink] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,15 +27,23 @@ function Navbar({ darkMode, setDarkMode }) {
   }, []);
 
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     if (showSearch) inputRef.current?.focus();
   }, [showSearch]);
+
+  const showSearchForm = showSearch || windowWidth > 768;
 
   return (
     <nav className={`navbar ${darkMode ? "dark" : ""} ${shrink ? "shrink" : ""}`}>
       {!showSearch && (
         <div
-          className={`logo ${darkMode ? "dark-logo" : ""}`}
-          onClick={() => navigate("/")}
+        className={`logo ${darkMode ? "dark-logo" : ""}`}
+        onClick={() => navigate("/")}
         >
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
@@ -42,10 +51,10 @@ function Navbar({ darkMode, setDarkMode }) {
           />
         </div>
       )}
-      {(showSearch || window.innerWidth > 768) && (
+      {showSearchForm && (
         <form
-          onSubmit={handleSubmit}
-          className={`search-form ${showSearch ? "active" : ""}`}
+        onSubmit={handleSubmit}
+        className={`search-form ${showSearch ? "active" : ""}`}
         >
           <input
             ref={inputRef}
@@ -60,10 +69,10 @@ function Navbar({ darkMode, setDarkMode }) {
         </form>
       )}
       <div className="nav-right">
-        {window.innerWidth <= 768 && (
+        {windowWidth <= 768 && (
           <button
-            className="mobile-search"
-            onClick={() => setShowSearch(!showSearch)}
+          className="mobile-search"
+          onClick={() => setShowSearch(!showSearch)}
           >
             {showSearch ? <FaTimes /> : <FaSearch />}
           </button>
@@ -74,8 +83,8 @@ function Navbar({ darkMode, setDarkMode }) {
               {darkMode ? <FaSun /> : <FaMoon />}
             </button>
             <button
-              className="subscriptions-btn"
-              onClick={() => navigate("/subscriptions")}
+            className="subscriptions-btn"
+            onClick={() => navigate("/subscriptions")}
             >
               <FaHeart />
             </button>

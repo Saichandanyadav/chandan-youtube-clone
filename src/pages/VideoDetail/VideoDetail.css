@@ -105,6 +105,13 @@
   animation: spin 1s linear infinite;
 }
 
+.video-detail-container.dark .video-title,
+.video-detail-container.dark .video-description,
+.video-detail-container.dark .video-channel,
+.video-detail-container.dark .video-views {
+  color: var(--text-color);
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

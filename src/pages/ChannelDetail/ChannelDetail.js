@@ -5,7 +5,7 @@ import VideoList from "../../components/VideoList/VideoList";
 import { FaCheckCircle, FaBell, FaBellSlash } from "react-icons/fa";
 import "./ChannelDetail.css";
 
-function ChannelDetail() {
+function ChannelDetail({ darkMode }) {
   const { id } = useParams();
   const [channel, setChannel] = useState(null);
   const [videos, setVideos] = useState([]);
@@ -64,11 +64,11 @@ function ChannelDetail() {
 
   const { snippet, statistics, brandingSettings } = channel;
   const bannerUrl =
-    brandingSettings?.image?.bannerExternalUrl ||
-    "https://via.placeholder.com/1200x300?text=Channel+Banner";
+  brandingSettings?.image?.bannerExternalUrl ||
+  "https://via.placeholder.com/1200x300?text=Channel+Banner";
 
   return (
-    <div className="channel-detail">
+    <div className={`channel-detail ${darkMode ? "dark" : ""}`}>
       <div className="channel-banner" style={{ backgroundImage: `url(${bannerUrl})` }}></div>
       <div className="channel-header">
         <img
@@ -82,8 +82,8 @@ function ChannelDetail() {
           <p>{Number(statistics?.subscriberCount || 0).toLocaleString()} subscribers</p>
         </div>
         <button
-          className={`subscribe-btn ${subscribed ? "subscribed" : ""}`}
-          onClick={handleSubscribe}
+        className={`subscribe-btn ${subscribed ? "subscribed" : ""}`}
+        onClick={handleSubscribe}
         >
           {subscribed ? (
             <>
