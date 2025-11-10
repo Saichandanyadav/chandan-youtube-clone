@@ -1,0 +1,147 @@
+.app-container {
+  display: flex;
+  transition: margin-left 0.4s ease-in-out;
+}
+
+.app-container.sidebar-open {
+  margin-left: 260px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.2rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-right: 1px solid #ddd;
+  height: 100vh;
+  width: 260px;
+  position: fixed;
+  top: 60px;
+  left: -260px;
+  transition: transform 0.4s ease-in-out, left 0.4s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 90;
+}
+
+.sidebar.open {
+  left: 0;
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--text-color);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+
+.sidebar-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.sidebar-btn:hover {
+  background-color: var(--button-bg);
+  color: var(--button-color);
+  transform: translateX(4px);
+}
+
+.sidebar-btn.active {
+  background-color: var(--button-bg);
+  color: var(--button-color);
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 70px;
+  left: 15px;
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 22px;
+  padding: 6px 12px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+@media (max-width: 1024px) {
+  .app-container.sidebar-open {
+    margin-left: 230px;
+  }
+  .sidebar {
+    width: 230px;
+    left: -230px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container.sidebar-open {
+    margin-left: 0;
+  }
+  .sidebar {
+    width: 240px;
+    left: -240px;
+    top: 60px;
+    height: calc(100% - 60px);
+    z-index: 150;
+  }
+  .sidebar.open {
+    left: 0;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 210px;
+    left: -210px;
+  }
+  .sidebar-title {
+    font-size: 1.1rem;
+  }
+  .sidebar-btn {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+}

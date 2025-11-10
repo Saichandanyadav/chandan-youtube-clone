@@ -1,70 +1,233 @@
-# Getting Started with Create React App
+# 🎬 **Chandan YouTube Clone**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Chandan YouTube Clone** — a lightweight, responsive, and dynamic YouTube-style web app built with **ReactJS** ⚛️.
+It fetches live videos using the **YouTube Data API v3** and seamlessly switches to **mock data** when API quota limits are reached.
 
-## Available Scripts
+Experience category browsing, searching, dark mode, and video playback — all in one smooth interface. 🎥✨
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌟 **Features**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🔥 **Core Highlights:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* 📺 Real-time video fetching via YouTube API
+* 🧩 Auto fallback to mock data when quota exceeds
+* 🔍 Smart search and category-based filters
+* 🎥 Dedicated video player with title, channel & stats
+* 🕶️ Built-in dark / light mode
+* 💾 Local watch history storage
+* 📱 100% responsive — optimized for desktop, tablet & mobile
+* ⚡ Minimal, elegant UI
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ **Installation Guide**
 
-### `npm run build`
+### 1️⃣ Clone the Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone <your-repo-url>
+cd chandan-youtube-clone
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2️⃣ Install Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### 3️⃣ Create a `.env` File
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Add your API key to a new `.env` file in the root folder:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```env
+REACT_APP_YOUTUBE_API_KEY=YOUR_API_KEY_HERE
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4️⃣ Run the Project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+### 5️⃣ Build for Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🔑 **How to Create a YouTube Data API Key (Step-by-Step Guide)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Follow these steps carefully 🧭
 
-### Analyzing the Bundle Size
+1. **🌐 Go to Google Cloud Console:**
+   👉 [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **📂 Create or Select a Project:**
 
-### Making a Progressive Web App
+   * Click the **Project Selector** dropdown at the top.
+   * Choose **New Project** → name it (e.g., `YouTubeCloneProject`) → click **Create**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. **🎬 Enable YouTube Data API v3:**
 
-### Advanced Configuration
+   * Go to **APIs & Services → Library**.
+   * Search for **YouTube Data API v3** → click **Enable**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. **🔐 Create API Credentials:**
 
-### Deployment
+   * Go to **APIs & Services → Credentials**.
+   * Click **Create Credentials → API Key**.
+   * Copy the generated API Key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+5. **🛡️ Restrict the API Key (Recommended):**
 
-### `npm run build` fails to minify
+   * Click your API key name → Edit.
+   * Under **Application restrictions**, choose **HTTP referrers (websites)**.
+   * Add your local & deployed URLs:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+     ```
+     http://localhost:3000
+     https://your-domain-name.com
+     ```
+   * Under **API restrictions**, select **YouTube Data API v3** → Save.
+
+6. **📊 Check API Quota:**
+
+   * Go to **APIs & Services → Quotas**.
+   * If you hit quota limits, your app will auto-load **mock data** for uninterrupted testing.
+
+---
+
+## 🧩 **Environment Variables Example**
+
+```env
+REACT_APP_YOUTUBE_API_KEY=AIzaSyD...
+```
+
+Restart your development server after adding or changing `.env`:
+
+```bash
+npm start
+```
+
+---
+
+## 🗂️ **Project Structure**
+
+```
+chandan-youtube-clone/
+│
+├── public/
+│   ├── mockData/
+│   │   └── videos.json          # Sample mock video data
+│   ├── index.html
+│
+├── src/
+│   ├── components/              # Reusable React components
+│   ├── pages/                   # Page-level UI modules
+│   ├── services/
+│   │   └── youtubeAPI.js        # Handles YouTube API and mock fallback
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+│
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+## 🧠 **Sample Mock Data (videos.json)**
+
+When the API quota exceeds, your app automatically switches to mock data.
+Here’s an example of a mock video entry:
+
+```json
+{
+  "kind": "youtube#searchResult",
+  "etag": "v-etag-1",
+  "id": {
+    "kind": "youtube#video",
+    "videoId": "bMknfKXIFA8"
+  },
+  "snippet": {
+    "publishedAt": "2023-11-05T15:30:00Z",
+    "channelId": "UCsBjURrPoeaKhTPDchF9cQ",
+    "title": "React 18 Crash Course | Build 4 Projects with React",
+    "description": "An in-depth React 18 course for beginners. Covers hooks, state management, and routing. Build four practical applications.",
+    "thumbnails": {
+      "default": {
+        "url": "https://i.ytimg.com/vi/bMknfKXIFA8/default.jpg",
+        "width": 120,
+        "height": 90
+      },
+      "medium": {
+        "url": "https://i.ytimg.com/vi/bMknfKXIFA8/mqdefault.jpg",
+        "width": 320,
+        "height": 180
+      },
+      "high": {
+        "url": "https://i.ytimg.com/vi/bMknfKXIFA8/hqdefault.jpg",
+        "width": 480,
+        "height": 360
+      }
+    },
+    "channelTitle": "freeCodeCamp.org",
+    "liveBroadcastContent": "none",
+    "publishTime": "2023-11-05T15:30:00Z"
+  }
+}
+```
+
+💡 You can include multiple entries (20–25 recommended) to simulate a full video list.
+
+---
+
+## 🚀 **Deployment**
+
+You can easily deploy your app to:
+
+* 🌐 [**Vercel**](https://vercel.com/)
+* ☁️ [**Netlify**](https://www.netlify.com/)
+* 🧭 [**GitHub Pages**](https://pages.github.com/)
+
+After deployment:
+✅ Add your domain in the **Google Cloud Console → API Key Restrictions**.
+✅ Run:
+
+```bash
+npm run build
+```
+
+✅ Deploy the `/build` folder to your hosting platform.
+
+---
+
+## 🧰 **Troubleshooting**
+
+| ⚠️ Issue                        | 💡 Solution                                  |
+| ------------------------------- | -------------------------------------------- |
+| **Quota Exceeded**              | Auto fallback to mock data                   |
+| **403 Forbidden / Invalid Key** | Verify `.env` and enable YouTube Data API v3 |
+| **CORS Errors**                 | Add your domain in referrer restrictions     |
+| **Blank Page / No Videos**      | Check API response & `.env` setup            |
+| **.env Not Loading**            | Restart app with `npm start` after saving    |
+
+---
+
+## 👨‍💻 **Author**
+
+**Developed by:** **Sai Chandan Yadav** 🚀
+🔗 **YouTube:** [@saichandanyadav](https://www.youtube.com/@saichandanyadav/videos)
+📧 **Email:** [saichandanyadav@gmail.com](mailto:saichandhanyadav2002@gmail.com@gmail.com)
+
+---
+
+## 🪪 **License**
+
+📜 This project is licensed under the **MIT License**.
+You’re free to use, modify, and distribute it for learning and personal development.

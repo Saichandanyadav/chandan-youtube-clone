@@ -1,38 +1,257 @@
-.App {
+:root {
+  --bg-color-light: #f9f9f9;
+  --bg-color-dark: #121212;
+  --text-color-light: #000;
+  --text-color-dark: #f1f1f1;
+  --card-bg-light: #fff;
+  --card-bg-dark: #181818;
+  --channel-color-light: #555;
+  --channel-color-dark: #aaa;
+  --navbar-bg-light: #fff;
+  --navbar-bg-dark: #181818;
+  --input-bg-light: #fff;
+  --input-bg-dark: #303030;
+  --input-border-light: #ccc;
+  --input-border-dark: #555;
+  --button-bg-light: red;
+  --button-bg-dark: #cc0000;
+  --button-color: #fff;
+}
+
+body.light {
+  --bg-color: var(--bg-color-light);
+  --text-color: var(--text-color-light);
+  --card-bg: var(--card-bg-light);
+  --channel-color: var(--channel-color-light);
+  --navbar-bg: var(--navbar-bg-light);
+  --input-bg: var(--input-bg-light);
+  --input-border: var(--input-border-light);
+  --button-bg: var(--button-bg-light);
+}
+
+body.dark {
+  --bg-color: var(--bg-color-dark);
+  --text-color: var(--text-color-dark);
+  --card-bg: var(--card-bg-dark);
+  --channel-color: var(--channel-color-dark);
+  --navbar-bg: var(--navbar-bg-dark);
+  --input-bg: var(--input-bg-dark);
+  --input-border: var(--input-border-dark);
+  --button-bg: var(--button-bg-dark);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2, h3, h4, p, small, span, a {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--button-bg);
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.video-thumb img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-card:hover .video-thumb img {
+  transform: scale(1.03);
+}
+
+.video-info {
+  padding: 0.6rem;
+}
+
+.video-title {
+  margin: 0.1rem 0;
+  font-size: 0.55rem;
+  line-height: 1.1;
+  font-weight: 600;
+  color: var(--text-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  word-break: break-word;
+}
+
+.video-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.video-title-link:hover {
+  text-decoration: underline;
+}
+
+.channel-name {
+  margin: 0.2rem 0;
+  font-size: 0.65rem;
+  color: var(--channel-color);
+}
+
+.channel-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.channel-link:hover {
+  color: var(--button-bg);
+}
+
+.video-stats {
+  font-size: 0.6rem;
+  color: var(--channel-color);
+}
+
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.video-list p {
+  color: var(--channel-color);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.video-detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 1.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.video-frame iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.video-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.video-channel {
+  font-size: 0.95rem;
+  color: var(--channel-color);
+}
+
+.video-views {
+  font-size: 0.9rem;
+  color: var(--channel-color);
+}
+
+.video-description {
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.video-description.expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+.toggle-desc-btn {
+  background: none;
+  border: none;
+  color: var(--button-bg);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.3rem;
+  align-self: flex-start;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: var(--channel-color);
+}
+
+@media (max-width: 1024px) {
+  .video-frame iframe { height: 450px; }
+  .video-title { font-size: 1.3rem; }
+  .video-description { font-size: 0.9rem; }
+}
+
+@media (max-width: 768px) {
+  .video-frame iframe { height: 350px; }
+  .video-title { font-size: 1.2rem; }
+  .video-description { font-size: 0.88rem; }
+  .video-thumb img { height: 160px; }
+  .video-title { font-size: 0.5rem; }
+}
+
+@media (max-width: 480px) {
+  .video-frame iframe { height: 250px; }
+  .video-title { font-size: 1.1rem; }
+  .video-description { font-size: 0.85rem; }
+  .video-views, .video-channel { font-size: 0.8rem; }
+  .video-thumb img { height: 140px; }
+  .video-title { font-size: 0.45rem; }
 }

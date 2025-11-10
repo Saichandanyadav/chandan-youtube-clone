@@ -1,0 +1,119 @@
+.youtube-card {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+  text-align: left !important;
+}
+
+.youtube-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  border-radius: 5px;
+}
+
+.youtube-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border: none;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.youtube-card:hover .youtube-thumb img {
+  transform: scale(1.03);
+}
+
+.youtube-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 0.6rem;
+  gap: 0.7rem;
+  text-align: left !important;
+}
+
+.youtube-avatar img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.youtube-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+  text-align: left !important;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+}
+
+.youtube-title {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left !important;
+  width: 100%;
+}
+
+.youtube-title-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.youtube-title-link:hover {
+  text-decoration: underline;
+}
+
+.youtube-channel {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.85rem;
+  color: #606060;
+  text-align: left !important;
+  width: 100%;
+}
+
+.youtube-channel-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.youtube-channel-link:hover {
+  color: red;
+}
+
+.youtube-stats {
+  font-size: 0.8rem;
+  color: #909090;
+  margin-top: 0.1rem;
+  text-align: left !important;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .youtube-thumb {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 480px) {
+  .youtube-thumb {
+    aspect-ratio: 16 / 9;
+  }
+}
