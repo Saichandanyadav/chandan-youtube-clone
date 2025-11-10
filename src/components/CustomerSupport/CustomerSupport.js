@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope, FaYoutube, FaTimes } from "react-icons/fa";
 import "./CustomerSupport.css";
 
 function CustomerSupport() {
@@ -23,7 +24,7 @@ function CustomerSupport() {
       {open && (
         <div className="support-modal">
           <button className="close-support" onClick={() => setOpen(false)}>
-            ✕
+            <FaTimes />
           </button>
           <div className="support-content">
             <img src="/developer.jpg" alt="Developer" className="profile-photo" />
@@ -31,21 +32,23 @@ function CustomerSupport() {
             <p className="dev-role">Full Stack Developer</p>
             <div className="dev-links">
               <a href="https://github.com/Saichandanyadav" target="_blank" rel="noreferrer">
-                GitHub
+                <FaGithub /> GitHub
               </a>
               <a
                 href="https://www.linkedin.com/in/saichandanyadav/"
                 target="_blank"
                 rel="noreferrer"
               >
-                LinkedIn
+                <FaLinkedin /> LinkedIn
               </a>
-              <a href="mailto:saichandhanyadav2002@gmail.com@gmail.com">Email</a>
+              <a href="mailto:saichandhanyadav2002@gmail.com">
+                <FaEnvelope /> Email
+              </a>
             </div>
             <div className="project-section">
               <p>Want to know about the project explanation?</p>
               <button className="watch-btn" onClick={() => setVideoOpen(true)}>
-                Watch on YouTube
+                <FaYoutube /> Watch on YouTube
               </button>
             </div>
           </div>
@@ -56,7 +59,7 @@ function CustomerSupport() {
         <div className="video-modal">
           <div className="video-content">
             <button className="close-video" onClick={() => setVideoOpen(false)}>
-              ✕
+              <FaTimes />
             </button>
             <h3>Project Explanation</h3>
             <iframe
@@ -74,7 +77,7 @@ function CustomerSupport() {
                 window.open("https://www.youtube.com/@saichandanyadav/videos", "_blank")
               }
             >
-              Follow me on YouTube
+              <FaYoutube /> Follow me on YouTube
             </button>
           </div>
         </div>
