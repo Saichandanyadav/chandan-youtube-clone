@@ -3,7 +3,7 @@ import axios from "axios";
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-let useMock = true;
+let useMock = false;
 
 export const fetchFromAPI = async (endpoint) => {
   if (useMock) {
