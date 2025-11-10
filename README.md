@@ -63,45 +63,45 @@ npm run build
 
 ---
 
-## 🔑 **How to Create a YouTube Data API Key (Step-by-Step Guide)**
+## 🔑 **How to Create a YouTube Data API Key**
 
 Follow these steps carefully 🧭
 
-1. 🌐 **Go to Google Cloud Console:**
+1. 🌐 Go to **Google Cloud Console:**
    👉 [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
-2. 📂 **Create or Select a Project:**
+2. 📂 Create or Select a Project:
 
-   * Click the **Project Selector** dropdown at the top.
-   * Choose **New Project**, name it (e.g., `YouTubeCloneProject`), and click **Create**.
+   * Click **Project Selector** → **New Project**
+   * Name it (e.g., `YouTubeCloneProject`) and click **Create**
 
-3. 🎬 **Enable YouTube Data API v3:**
+3. 🎬 Enable YouTube Data API v3:
 
-   * Go to **APIs & Services → Library**.
-   * Search for **YouTube Data API v3** and click **Enable**.
+   * Navigate to **APIs & Services → Library**
+   * Search for **YouTube Data API v3** and click **Enable**
 
-4. 🔐 **Create API Credentials:**
+4. 🔐 Create API Credentials:
 
-   * Navigate to **APIs & Services → Credentials**.
-   * Click **Create Credentials → API Key**.
-   * Copy the generated key.
+   * Go to **APIs & Services → Credentials**
+   * Click **Create Credentials → API Key**
+   * Copy the generated key
 
-5. 🛡️ **Restrict the API Key (Recommended):**
+5. 🛡️ Restrict the API Key:
 
-   * Click your API key → **Edit Key**.
-   * Under **Application Restrictions**, select **HTTP referrers (websites)**.
+   * Click your key → **Edit Key**
+   * Under **Application Restrictions**, select **HTTP referrers (websites)**
    * Add these URLs:
 
      ```
      http://localhost:3000
      https://chandan-youtube-clone.vercel.app/
      ```
-   * Under **API Restrictions**, choose **YouTube Data API v3** → Save.
+   * Under **API Restrictions**, choose **YouTube Data API v3** → Save
 
-6. 📊 **Monitor API Quota:**
+6. 📊 Monitor API Quota:
 
-   * Go to **APIs & Services → Quotas**.
-   * If your quota exceeds, the app auto-loads mock data for continuous functionality.
+   * Go to **APIs & Services → Quotas**
+   * If your quota exceeds, the app auto-loads mock data for smooth playback 🎬
 
 ---
 
@@ -111,7 +111,7 @@ Follow these steps carefully 🧭
 REACT_APP_YOUTUBE_API_KEY=AIzaSyD...
 ```
 
-Restart your development server after modifying `.env`:
+After modifying `.env`, restart your development server:
 
 ```bash
 npm start
@@ -147,7 +147,7 @@ chandan-youtube-clone/
 
 ## 🧠 **Sample Mock Data (videos.json)**
 
-When the API quota exceeds, your app switches to mock data automatically.
+When the API quota exceeds, your app automatically switches to mock data.
 
 ```json
 {
@@ -192,21 +192,35 @@ When the API quota exceeds, your app switches to mock data automatically.
 
 ## 🚀 **Deployment**
 
-You can easily deploy your app to:
+You can easily deploy your app using any platform:
 
 * 🌐 [**Vercel**](https://vercel.com/)
 * ☁️ [**Netlify**](https://www.netlify.com/)
 * 🧭 [**GitHub Pages**](https://pages.github.com/)
 
-After deployment:
-✅ Add your domain in **Google Cloud Console → API Key Restrictions**
-✅ Build your app:
+### 🧭 **Post-Deployment Setup (For Vercel Users)**
 
-```bash
-npm run build
-```
+After deploying your app to Vercel:
 
-✅ Deploy the `/build` folder.
+1. ✅ Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Navigate to **APIs & Services → Credentials**
+3. Edit your existing YouTube API key
+4. Under **Application Restrictions**, select **HTTP referrers (websites)**
+5. Add:
+
+   ```
+   http://localhost:3000
+   https://chandan-youtube-clone.vercel.app/
+   ```
+6. Under **API Restrictions**, choose **YouTube Data API v3** and click **Save**
+7. If you updated `.env`, rebuild your app:
+
+   ```bash
+   npm run build
+   ```
+8. Push changes to GitHub → Vercel will auto-redeploy 🌐
+
+✅ Done! Your key is now secure and works only on localhost & your live Vercel domain.
 
 ---
 
@@ -228,7 +242,7 @@ npm run build
 
 🔗 **YouTube:** [@saichandanyadav](https://www.youtube.com/@saichandanyadav/videos)
 
-📧 **Email:** [saichandhanyadav2002@gmail.com@gmail.com](mailto:saichandhanyadav2002@gmail.com@gmail.com)
+📧 **Email:** [saichandhanyadav2002@gmail.com](mailto:saichandhanyadav2002@gmail.com)
 
 ---
 
@@ -240,5 +254,5 @@ npm run build
 
 ## 💖 **Support & Feedback**
 
-⭐ If you like this project, don’t forget to star the repo and subscribe to my YouTube channel!
+⭐ If you like this project, don’t forget to **star the repo** and **subscribe** to my YouTube channel!
 💬 Feel free to reach out via email for collaboration or feedback.
