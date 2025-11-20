@@ -17,6 +17,27 @@
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 5px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  color: var(--button-bg);
+  transform: scale(1.1);
+}
+
 .logo img {
   height: 28px;
   cursor: pointer;
@@ -87,7 +108,8 @@
 .theme-btn:hover,
 .mobile-search:hover,
 .history-btn:hover,
-.subscriptions-btn:hover {
+.subscriptions-btn:hover,
+.search-form button:hover {
   color: var(--button-bg);
   transform: scale(1.1);
 }
@@ -98,6 +120,9 @@
   }
   .navbar {
     padding: 8px 12px;
+  }
+  .nav-left {
+    gap: 10px;
   }
 }
 

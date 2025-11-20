@@ -233,6 +233,21 @@ a:hover {
   color: var(--channel-color);
 }
 
+.page-wrapper {
+  transition: margin-left 0.4s ease-in-out;
+  padding-top: 0;
+}
+
+.page-wrapper.shift {
+  margin-left: 260px;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper.shift {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .video-frame iframe { height: 450px; }
   .video-title { font-size: 1.3rem; }

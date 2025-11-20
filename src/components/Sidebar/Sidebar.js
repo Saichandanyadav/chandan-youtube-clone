@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import React, { useEffect } from "react";
+import { FaTimes } from "react-icons/fa";
 import "./Sidebar.css";
 
 const categories = [
@@ -17,41 +17,34 @@ const categories = [
   "Food",
 ];
 
-function Sidebar({ selectedCategory, setSelectedCategory, darkMode }) {
-  const [open, setOpen] = useState(false);
-
+function Sidebar({ selectedCategory, setSelectedCategory, darkMode, isOpen, setIsOpen, navigate }) {
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-  }, [open]);
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+  }, [isOpen]);
 
   return (
-    <div className={`app-container ${open ? "sidebar-open" : ""}`}>
-      {!open && (
-        <button className="menu-toggle" onClick={() => setOpen(true)}>
-          <FaBars />
+    <div className={`sidebar ${isOpen ? "open" : ""} ${darkMode ? "dark" : ""}`}>
+      <div className="sidebar-header">
+        <h3 className="sidebar-title">Categories</h3>
+        <button className="close-btn" onClick={() => setIsOpen(false)}>
+          <FaTimes />
         </button>
-      )}
-      <div className={`sidebar ${open ? "open" : ""} ${darkMode ? "dark" : ""}`}>
-        <div className="sidebar-header">
-          <h3 className="sidebar-title">Categories</h3>
-          <button className="close-btn" onClick={() => setOpen(false)}>
-            <FaTimes />
+      </div>
+
+      <div className="sidebar-content">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`sidebar-btn ${selectedCategory === cat ? "active" : ""}`}
+            onClick={() => {
+              setSelectedCategory(cat);
+              setIsOpen(false);
+              navigate("/");
+            }}
+          >
+            {cat}
           </button>
-        </div>
-        <div className="sidebar-content">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`sidebar-btn ${selectedCategory === cat ? "active" : ""}`}
-              onClick={() => {
-                setSelectedCategory(cat);
-                setOpen(false);
-              }}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
   );

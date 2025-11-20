@@ -63,9 +63,10 @@ function ChannelDetail({ darkMode }) {
     return <h2 className="not-found">Channel not found.</h2>;
 
   const { snippet, statistics, brandingSettings } = channel;
+
   const bannerUrl =
-  brandingSettings?.image?.bannerExternalUrl ||
-  "https://via.placeholder.com/1200x300?text=Channel+Banner";
+    brandingSettings?.image?.bannerExternalUrl ||
+    "https://via.placeholder.com/1200x300?text=Channel+Banner";
 
   return (
     <div className={`channel-detail ${darkMode ? "dark" : ""}`}>
@@ -82,8 +83,8 @@ function ChannelDetail({ darkMode }) {
           <p>{Number(statistics?.subscriberCount || 0).toLocaleString()} subscribers</p>
         </div>
         <button
-        className={`subscribe-btn ${subscribed ? "subscribed" : ""}`}
-        onClick={handleSubscribe}
+          className={`subscribe-btn ${subscribed ? "subscribed" : ""}`}
+          onClick={handleSubscribe}
         >
           {subscribed ? (
             <>
@@ -98,7 +99,9 @@ function ChannelDetail({ darkMode }) {
       </div>
       {snippet?.description && <p className="channel-description">{snippet.description}</p>}
       <h3 className="channel-videos-title">Recent Uploads</h3>
-      <VideoList videos={videos} />
+      <div className="channel-videos-wrapper">
+        <VideoList videos={videos} />
+      </div>
     </div>
   );
 }

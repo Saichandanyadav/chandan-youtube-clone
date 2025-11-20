@@ -13,10 +13,11 @@ function VideoDetail({ darkMode }) {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((res) => {
       const data = res.data || res;
       if (!data.items || data.items.length === 0) return;
-      const selectedVideo = data.items[0];
-      setVideo(selectedVideo);
+      const selected = data.items[0];
+      setVideo(selected);
+
       const history = JSON.parse(localStorage.getItem("watchHistory")) || [];
-      const updated = [selectedVideo, ...history.filter((v) => v.id !== selectedVideo.id)];
+      const updated = [selected, ...history.filter((v) => v.id !== selected.id)];
       localStorage.setItem("watchHistory", JSON.stringify(updated.slice(0, 20)));
     });
   }, [id]);
@@ -39,7 +40,6 @@ function VideoDetail({ darkMode }) {
 
   const { snippet, statistics } = video;
   const embedUrl = `https://www.youtube.com/embed/${id}?autoplay=1`;
-  const viewCount = statistics?.viewCount || "0";
 
   return (
     <div className={`video-detail-container ${darkMode ? "dark" : ""}`}>
@@ -47,7 +47,6 @@ function VideoDetail({ darkMode }) {
         <iframe
           src={embedUrl}
           title={snippet.title}
-          frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
         ></iframe>
@@ -64,12 +63,20 @@ function VideoDetail({ darkMode }) {
             <span className="video-channel">{snippet.channelTitle}</span>
           </Link>
         </div>
-        <p className="video-views">{Number(viewCount).toLocaleString()} views</p>
+
+        <p className="video-views">
+          {Number(statistics?.viewCount || 0).toLocaleString()} views
+        </p>
+
         <p className={`video-description ${showFullDesc ? "expanded" : ""}`}>
           {snippet.description}
         </p>
+
         {snippet.description.length > 150 && (
-          <button className="toggle-desc-btn" onClick={() => setShowFullDesc(!showFullDesc)}>
+          <button
+            className="toggle-desc-btn"
+            onClick={() => setShowFullDesc(!showFullDesc)}
+          >
             {showFullDesc ? "Show Less" : "Show More"}
           </button>
         )}
